@@ -3,7 +3,6 @@
 2. You have to print all the numbers from 1 to n in lexicographical order.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class LexicographicalNumbers {
