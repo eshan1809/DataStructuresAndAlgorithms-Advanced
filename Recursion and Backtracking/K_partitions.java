@@ -1,3 +1,8 @@
+/*
+1. You are given two integers n and k, where n represents number of elements and k represents 
+     number of subsets.
+2. You have to partition n elements in k subsets and print all such configurations.
+*/
 
 import java.util.*;
 
