@@ -1,5 +1,9 @@
+/*
+1. You are given a string, which represents an expression having only opening and closing parenthesis.
+2. You have to remove minimum number of parenthesis to make the given expression valid.
+3. If there are multiple answers, you have to print all of them.
+*/
 
-import java.io.*;
 import java.util.*;
 
 public class removeInvalidParenthesis {
@@ -24,15 +28,12 @@ public class removeInvalidParenthesis {
         Stack<Character> st = new Stack<>();
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            if (ch == '(') {
+            if (ch == '(')
                 st.push(ch);
-            } else {
-                if (st.size() > 0 && st.peek() == '(') {
-                    st.pop();
-                } else {
-                    st.push(ch);
-                }
-            }
+            else if (st.size() > 0 && st.peek() == '(')
+                st.pop();
+            else
+                st.push(ch);
         }
         return st.size();
     }
