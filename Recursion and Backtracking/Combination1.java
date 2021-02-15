@@ -6,7 +6,6 @@ Note -> Number of boxes is greater than number of items, hence some of the boxes
 */
 
 import java.io.*;
-import java.util.*;
 
 public class Combination1 {
     public static void combinations(int cb, int tb, int ssf, int ts, String asf) {
