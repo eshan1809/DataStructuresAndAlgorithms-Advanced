@@ -7,7 +7,6 @@ Note -> Number of boxes is greater than number of items, hence some of the boxes
 */
 
 import java.io.*;
-import java.util.*;
 
 public class Permutation2 {
 
