@@ -4,7 +4,6 @@
 */
 
 import java.io.*;
-import java.util.*;
 
 public class QueensPermutations_2dAs2d_QueenChooses {
     public static void queensPermutations(int qpsf, int tq, int[][] chess) {
