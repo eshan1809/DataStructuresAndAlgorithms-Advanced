@@ -4,7 +4,6 @@
 */
 
 import java.io.*;
-import java.util.*;
 
 public class QueensPermutations_2dAs2d_BoxChooses {
     public static void queensPermutations(int qpsf, int tq, int row, int col, String asf, boolean[] queens) {
