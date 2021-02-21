@@ -4,7 +4,6 @@
 */
 
 import java.io.*;
-import java.util.*;
 
 public class QueensCombinations_2dAs2d_QueenChooses {
 
