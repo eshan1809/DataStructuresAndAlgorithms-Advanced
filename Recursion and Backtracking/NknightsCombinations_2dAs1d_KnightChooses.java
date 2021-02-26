@@ -5,7 +5,6 @@
 */
 
 import java.io.*;
-import java.util.*;
 
 public class NknightsCombinations_2dAs1d_KnightChooses {
     public static boolean safe(boolean[][] chess, int row, int col) {

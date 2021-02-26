@@ -5,7 +5,6 @@
 */
 
 import java.io.*;
-import java.util.*;
 
 public class NqueensPermutations_2dAs1d_QueenChooses {
 
