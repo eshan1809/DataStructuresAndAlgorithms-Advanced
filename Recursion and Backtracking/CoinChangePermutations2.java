@@ -24,8 +24,9 @@ public class CoinChangePermutations2 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         int[] coins = new int[n];
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++){
             coins[i] = Integer.parseInt(br.readLine());
+        }
         int amt = Integer.parseInt(br.readLine());
         coinChange(coins, 0, amt, "");
     }
