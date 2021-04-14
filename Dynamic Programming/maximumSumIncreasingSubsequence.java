@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class longestIncreasingSubsequence {
+public class maximumSumIncreasingSubsequence {
     public static void main(String[] args) throws Exception {
         // write your code here
         Scanner scn = new Scanner(System.in);
