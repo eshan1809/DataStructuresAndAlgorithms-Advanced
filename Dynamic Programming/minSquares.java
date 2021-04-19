@@ -5,7 +5,6 @@
    For eg -> In worst case N can be represented as (1*1) + (1*1) + (1*1)..... N times.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class minSquares {

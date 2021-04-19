@@ -4,7 +4,6 @@
 3. You are required to print the count of maximum number of envelopes that can be nested inside each other.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class russianDollEnvelopes {
