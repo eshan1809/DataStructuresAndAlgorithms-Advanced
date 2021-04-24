@@ -4,7 +4,6 @@
 3. You have to find the number of ways in which these chords can be drawn.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class circleAndChords {
@@ -28,5 +27,6 @@ public class circleAndChords {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         System.out.println(NumberOfChords(n));
+        scn.close();
     }
 }

@@ -8,7 +8,6 @@ countvalleys
 Note -> At no point should we go below the sea-level. (number of downstrokes should never be more than number of upstrokes).
 */
 
-import java.io.*;
 import java.util.*;
 
 public class countOfValleysAndMountains {

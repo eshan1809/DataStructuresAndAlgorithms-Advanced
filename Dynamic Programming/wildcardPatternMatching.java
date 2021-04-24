@@ -7,7 +7,6 @@ The wildcard pattern can include the characters '?' and '*'
 '*' - matches any sequence of characters (including the empty sequence)
 */
 
-import java.io.*;
 import java.util.*;
 
 public class wildcardPatternMatching {

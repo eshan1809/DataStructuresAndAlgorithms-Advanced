@@ -7,7 +7,6 @@ for 2, answer is 2 -> ()(), (())
 for 3, asnwer is 5 -> ()()(), () (()), (())(), (()()), ((()))
 */
 
-import java.io.*;
 import java.util.*;
 
 public class countBrackets {

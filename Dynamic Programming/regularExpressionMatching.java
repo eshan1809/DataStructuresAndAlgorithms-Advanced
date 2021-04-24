@@ -7,7 +7,6 @@ The pattern can include the characters '.' and '*'
 '*' - matches zero or more of the preceding character
 */
 
-import java.io.*;
 import java.util.*;
 
 public class regularExpressionMatching {

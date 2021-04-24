@@ -9,7 +9,6 @@ C3 -> 5
 Cn -> C0.Cn-1 + C1.Cn-2 + .. + Cn-2.C1 + Cn-1.C0
 */
 
-import java.io.*;
 import java.util.*;
 
 public class catalanNumber {

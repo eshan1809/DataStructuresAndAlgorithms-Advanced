@@ -3,7 +3,6 @@
 2. You are required to find the number of Binary Search Trees you can create using the elements.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class numberOfBsts {
