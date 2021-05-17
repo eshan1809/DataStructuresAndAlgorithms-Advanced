@@ -1,10 +1,11 @@
 /*
-Given a singly linked list of Integers, determine it is a palindrome or not.
+Given a singly linkedlist : l0 -> l1 -> l2 -> l3 -> l4 -> l5 -> l6 ..... -> ln-1 -> ln 
+reorder it : l0 -> ln -> l1 -> ln-1 -> l2 -> ln-2 -> l3 -> ln-3 -> ..... 
 */
 
 import java.util.*;
 
-public class palindromeLinkedlist {
+public class foldOfLinkedlist {
     public static class ListNode {
         int val = 0;
         ListNode next = null;
@@ -39,32 +40,30 @@ public class palindromeLinkedlist {
         return head;
     }
 
-    public static boolean isPalindrome(ListNode head) {
+    public static void fold(ListNode head) {
         if (head == null || head.next == null)
-            return true;
-
+            return;
         ListNode mid = midNode(head), nhead = mid.next;
         mid.next = null;
-
         nhead = reverse(nhead);
+        ListNode c1 = head, c2 = nhead, f1 = null, f2 = null;
+        while (c2 != null) {
+            f1 = c1.next;
+            f2 = c2.next;
 
-        ListNode c1 = head, c2 = nhead;
+            c1.next = c2;
+            c2.next = f1;
 
-        boolean flag = true;
-        while (c1 != null && c2 != null) {
-            if (c1.val != c2.val) {
-                flag = false;
-                break;
-            }
-
-            c1 = c1.next;
-            c2 = c2.next;
+            c1 = f1;
+            c2 = f2;
         }
+    }
 
-        nhead = reverse(nhead);
-        mid.next = nhead;
-
-        return flag;
+    static void printList(ListNode node) {
+        while (node != null) {
+            System.out.print(node.val + " ");
+            node = node.next;
+        }
     }
 
     public static void main(String[] args) {
@@ -77,6 +76,8 @@ public class palindromeLinkedlist {
             prev = prev.next;
         }
         scn.close();
-        System.out.println(isPalindrome(dummy.next));
+        ListNode head = dummy.next;
+        fold(head);
+        printList(head);
     }
 }

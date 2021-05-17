@@ -16,6 +16,8 @@ class reverseALinkedlist {
     }
 
     public static ListNode reverse(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
         ListNode prev = null;
         while (head.next != null) {
             ListNode next = head.next;
