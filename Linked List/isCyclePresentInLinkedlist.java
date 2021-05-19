@@ -18,16 +18,15 @@ public class isCyclePresentInLinkedlist {
     }
 
     public static boolean isCyclePresentInLL(ListNode head) {
-        HashSet<ListNode> set = new HashSet<>();
-        ListNode temp = head;
-        while (temp != null) {
-            if (set.contains(temp))
+        if (head == null || head.next == null)
+            return false;
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow.equals(fast))
                 return true;
-            else
-                set.add(temp);
-            temp = temp.next;
         }
-
         return false;
     }
 
