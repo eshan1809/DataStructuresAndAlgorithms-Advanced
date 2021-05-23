@@ -20,7 +20,7 @@ public class cycleNodeInLinkedlist {
     }
 
     public static ListNode CycleNode(ListNode head) {
-        HashSet<ListNode> set = new HashSet();
+        HashSet<ListNode> set = new HashSet<>();
         ListNode temp = head;
         while (temp != null) {
             if (set.contains(temp))
