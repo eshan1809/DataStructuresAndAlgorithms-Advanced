@@ -8,7 +8,25 @@ import java.util.*;
 
 public class removeDuplicateLetters {
     public static String removeDuplicates(String s) {
-        return null;
+        int[] freq = new int[26];
+        for (int i = 0; i < s.length(); i++)
+            freq[s.charAt(i) - 'a']++;
+        Stack<Character> st = new Stack<>();
+        HashSet<Character> set = new HashSet<>();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            freq[ch - 'a']--;
+            if (set.contains(ch))
+                continue;
+            while (st.size() > 0 && st.peek() > ch && freq[st.peek() - 'a'] > 0)
+                set.remove(st.pop());
+            st.push(ch);
+            set.add(ch);
+        }
+        String str = "";
+        while (st.size() > 0)
+            str = st.pop() + str;
+        return str;
     }
 
     public static void main(String[] args) throws Exception {
