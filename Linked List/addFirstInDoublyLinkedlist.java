@@ -39,7 +39,15 @@ public class addFirstInDoublyLinkedlist {
         }
 
         public void addFirst(int val) {
-
+            if (head == null) {
+                head.data = val;
+                tail = head;
+                return;
+            }
+            Node temp = new Node(val);
+            temp.next = head;
+            head.prev = temp;
+            head = temp;
         }
 
     }
@@ -56,6 +64,7 @@ public class addFirstInDoublyLinkedlist {
 
             str = scn.nextLine();
         }
+        scn.close();
         System.out.println(dll);
     }
 }
