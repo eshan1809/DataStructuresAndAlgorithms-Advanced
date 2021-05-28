@@ -27,7 +27,7 @@ public class numberOfEmployeesUnderEveryManager {
             }
         }
         Map<String, Integer> ans = new HashMap<>();
-        int x = getAns(tree, ceo, ans);
+        getAns(tree, ceo, ans);
         for (String emp : ans.keySet())
             System.out.println(emp + " " + ans.get(emp));
 
