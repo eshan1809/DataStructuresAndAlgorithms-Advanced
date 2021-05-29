@@ -30,6 +30,7 @@ public class countDistinctElementsInEveryWindowOfSize_K {
             arr[i] = scn.nextInt();
         }
         int k = scn.nextInt();
+        scn.close();
         ArrayList<Integer> ans = solution(arr, k);
         for (int a : ans) {
             System.out.print(a + " ");
