@@ -1,15 +1,14 @@
 /*
 1. You are given a partially written DoublyLinkedList class.
-2. You are required to complete the body of removeFirst function. This function is supposed to add an element to the front of LinkedList. 
+2. You are required to complete the body of removeLast function. This function is supposed to add an element to the front of LinkedList. 
 3. If size of list is zero then return "ListIsEmpty: -1". 
 4. You are required to update head, tail and size as required.
-5. Input and Output is managed for you. Just update the code in removeFirst function.
+5. Input and Output is managed for you. Just update the code in removeLast function.
 */
 
 import java.util.*;
 
-class removeFirstInDoublyLinkedlist {
-
+class removeLastInDoublyLinkedlist {
     public static class DoublyLinkedList {
         private class Node {
             int data = 0;
@@ -87,18 +86,40 @@ class removeFirstInDoublyLinkedlist {
 
         // RemoveFunctions======================================
 
+        private Node removeFirstNode() {
+            Node node = this.head;
+            if (this.size == 1)
+                this.head = this.tail = null;
+            else {
+                Node nextNode = this.head.next;
+                nextNode.prev = null;
+                node.next = null;
+
+                this.head = nextNode;
+            }
+
+            this.size--;
+            return node;
+        }
+
         public int removeFirst() {
             if (ListIsEmptyException())
                 return -1;
-            Node temp = head;
+            Node node = removeFirstNode();
+            return node.data;
+        }
+
+        public int removeLast() {
+            if (ListIsEmptyException())
+                return -1;
+            Node temp = tail;
             if (this.size-- == 1) {
-                head = null;
-                tail = null;
+                head = tail = null;
                 return temp.data;
             }
-            head = head.next;
-            head.prev = null;
-            temp.next = null;
+            tail = tail.prev;
+            tail.next = null;
+            temp.prev = null;
             return temp.data;
         }
 
@@ -117,7 +138,8 @@ class removeFirstInDoublyLinkedlist {
                 dll.addLast(Integer.parseInt(s[1]));
             else if (s[0].equals("removeFirst"))
                 System.out.println(dll.removeFirst());
-
+            else if (s[0].equals("removeLast"))
+                System.out.println(dll.removeLast());
             str = scn.nextLine();
         }
         System.out.println(dll);
