@@ -49,6 +49,7 @@ public class smallestSubstringAStringContainingAllCharactersOfAnotherString {
         String s1 = scn.next();
         String s2 = scn.next();
         System.out.println(solution(s1, s2));
+        scn.close();
     }
 
 }
