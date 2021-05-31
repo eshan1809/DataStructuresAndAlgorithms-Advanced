@@ -87,5 +87,6 @@ public class addLastInDoublyLinkedlist {
         }
 
         System.out.println(dll);
+        scn.close();
     }
 }

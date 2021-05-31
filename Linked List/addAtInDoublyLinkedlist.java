@@ -242,5 +242,6 @@ public class addAtInDoublyLinkedlist {
         }
 
         System.out.println(dll);
+        scn.close();
     }
 }
