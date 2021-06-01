@@ -12,7 +12,7 @@ public class countOfSubstringsHavingAllUniqueCharacters {
         int count = 0;
         for (int i = 0; i < str.length(); i++) {
             Set<Character> set = new HashSet<>();
-            for (int j = 0; j < str.length(); j++) {
+            for (int j = i; j < str.length(); j++) {
                 char ch = str.charAt(j);
                 if (set.contains(ch))
                     break;
