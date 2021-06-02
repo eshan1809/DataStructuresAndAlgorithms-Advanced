@@ -11,7 +11,38 @@ import java.util.*;
 public class findAllAnagramsInAString {
     public static void findAnagrams(String s, String p) {
         // write your code here
-
+        int n = s.length(), m = p.length();
+        List<Integer> list = new ArrayList<>();
+        Map<Character, Integer> pmap = new HashMap<>(), smap = new HashMap<>();
+        for (char ch : p.toCharArray())
+            pmap.put(ch, pmap.getOrDefault(ch, 0) + 1);
+        for (int i = 0; i < m - 1; i++) {
+            char ch = s.charAt(i);
+            smap.put(ch, smap.getOrDefault(ch, 0) + 1);
+        }
+        for (int i = m - 1; i < n; i++) {
+            char ch1 = s.charAt(i);
+            smap.put(ch1, smap.getOrDefault(ch1, 0) + 1);
+            if (pmap.size() == smap.size()) {
+                int flag = 0;
+                for (char ch : pmap.keySet()) {
+                    if (!smap.containsKey(ch) || smap.get(ch) != pmap.get(ch)) {
+                        flag = 1;
+                        break;
+                    }
+                }
+                if (flag == 0)
+                    list.add(i - m + 1);
+            }
+            char ch2 = s.charAt(i - m + 1);
+            if (smap.get(ch2) == 1)
+                smap.remove(ch2);
+            else
+                smap.put(ch2, smap.get(ch2) - 1);
+        }
+        System.out.println(list.size());
+        for (int i : list)
+            System.out.print(i + " ");
     }
 
     public static void main(String[] args) {
