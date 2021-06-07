@@ -10,8 +10,15 @@ import java.util.*;
 public class pairsWithGivenSumInTwoSortedMatrices {
     public static int solve(int[][] num1, int[][] num2, int k) {
         // write your code here
-
-        return 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int[] num : num1)
+            for (int i : num)
+                map.put(i, map.getOrDefault(i, 0) + 1);
+        int ans = 0;
+        for (int[] num : num2)
+            for (int i : num)
+                ans += map.getOrDefault(k - i, 0);
+        return ans;
     }
 
     public static void main(String[] args) {
