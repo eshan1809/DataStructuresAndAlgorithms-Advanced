@@ -1,12 +1,12 @@
 /*
-1. Given a singly linklist, Segregate Node of LinkedList over lastindex and return pivot node of linkedlist.
-2. pivot is always be last index of linkedlist.
+1. Given a singly linklist, Segregate Node of LinkedList over pivot index and return starting node of linkedlist.
+2. pivot will be any random index in range of 0 to length Of Linkedlist
 3. After segregation pivot Element should have to be present at correct position as in sorted linkedlist.
 */
 
 import java.util.*;
 
-class segregateNodeOfLinkedlistOverLastIndex {
+public class segregateNodeOfLinkedlistOverPivotIndex {
     public static Scanner scn = new Scanner(System.in);
 
     public static class ListNode {
@@ -18,30 +18,33 @@ class segregateNodeOfLinkedlistOverLastIndex {
         }
     }
 
-    public static ListNode segregateOnLastIndex(ListNode head) {
+    public static ListNode segregate(ListNode head, int pivotIdx) {
         if (head == null)
             return null;
         ListNode temp = head;
-        while (temp.next != null)
+        int idx = pivotIdx;
+        while (idx-- != 0)
             temp = temp.next;
-        int pivot = temp.val;
-        ListNode less = new ListNode(0), l = less, more = new ListNode(0), m = more;
+        int pivotElement = temp.val;
+        ListNode less = new ListNode(0), l = less, more = new ListNode(0), m = more, pivot = null;
         temp = head;
         while (temp != null) {
-            if (temp.val <= pivot) {
-                l.next = temp;
-                l = l.next;
-            } else {
-                m.next = temp;
-                m = m.next;
-            }
+            if (pivotIdx-- == 0)
+                pivot = temp;
+            else if (temp.val <= pivotElement)
+                l = l.next = temp;
+            else
+                m = m.next = temp;
             temp = temp.next;
         }
         less = less.next;
         more = more.next;
-        l.next = more;
+        l.next = pivot;
+        pivot.next = more;
         m.next = null;
-        return l;
+        if (less == null)
+            return pivot;
+        return less;
     }
 
     public static void printList(ListNode node) {
@@ -58,15 +61,14 @@ class segregateNodeOfLinkedlistOverLastIndex {
             prev.next = new ListNode(scn.nextInt());
             prev = prev.next;
         }
-
         return dummy.next;
     }
 
     public static void main(String[] args) {
         int n = scn.nextInt();
         ListNode h1 = createList(n);
-        h1 = segregateOnLastIndex(h1);
+        int idx = scn.nextInt();
+        h1 = segregate(h1, idx);
         printList(h1);
-        scn.close();
     }
 }
