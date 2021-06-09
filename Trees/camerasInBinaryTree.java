@@ -27,7 +27,8 @@ public class camerasInBinaryTree {
             return 0;
         if (root.left == null && root.right == null)
             return 1;
-        helper(root);
+        if (helper(root) == 0)
+            noc++;
         return noc;
     }
 
