@@ -274,8 +274,6 @@ public class removeAfterInDoublyLinkedlist {
                 refNode.next.prev = refNode;
             }
             size--;
-            if (ans == tail)
-                tail = refNode;
             return ans.data;
         }
 
