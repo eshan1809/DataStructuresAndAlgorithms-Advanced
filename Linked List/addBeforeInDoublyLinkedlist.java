@@ -303,7 +303,7 @@ class addBeforeInDoublyLinkedlist {
 
             str = scn.nextLine();
         }
-
+        scn.close();
         System.out.println(dll);
     }
 }
