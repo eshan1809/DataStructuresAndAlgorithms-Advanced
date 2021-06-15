@@ -24,9 +24,62 @@ public class verticalOrderTraversalOfABinarytree2 {
         }
     }
 
-    public static ArrayList<ArrayList<Integer>> verticalOrderTraversal(TreeNode root) {
+    public static class Pair implements Comparable<Pair> {
+        TreeNode node;
+        int angle;
 
-        return null;
+        Pair(TreeNode node, int angle) {
+            this.node = node;
+            this.angle = angle;
+        }
+
+        public int compareTo(Pair o) {
+            if (this.node.val != o.node.val)
+                return this.node.val - o.node.val;
+            return this.angle - o.angle;
+        }
+    }
+
+    public static ArrayList<ArrayList<Integer>> verticalOrderTraversal(TreeNode root) {
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+
+        if (root == null)
+            return list;
+
+        Map<Integer, ArrayList<Integer>> map = new HashMap<>();
+        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+
+        Queue<Pair> q = new ArrayDeque<>();
+        q.add(new Pair(root, 0));
+
+        while (q.size() > 0) {
+            int n = q.size();
+            PriorityQueue<Pair> pq = new PriorityQueue<>();
+
+            for (int i = 0; i < n; i++) {
+                Pair p = q.remove();
+                pq.add(p);
+                if (p.node.left != null)
+                    q.add(new Pair(p.node.left, p.angle - 1));
+                if (p.node.right != null)
+                    q.add(new Pair(p.node.right, p.angle + 1));
+            }
+
+            while (pq.size() > 0) {
+                Pair p = pq.remove();
+                if (!map.containsKey(p.angle))
+                    map.put(p.angle, new ArrayList<>());
+                map.get(p.angle).add(p.node.val);
+                min = Math.min(min, p.angle);
+                max = Math.max(max, p.angle);
+            }
+        }
+
+        for (int i = min; i <= max; i++)
+            if (map.containsKey(i))
+                list.add(map.get(i));
+
+        return list;
     }
 
     // input_section=================================================
