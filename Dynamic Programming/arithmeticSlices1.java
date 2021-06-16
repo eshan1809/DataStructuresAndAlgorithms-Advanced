@@ -27,6 +27,7 @@ public class arithmeticSlices1 {
         for (int i = 0; i < n; i++) {
             arr[i] = scn.nextInt();
         }
+        scn.close();
         System.out.println(solution(arr));
     }
 }

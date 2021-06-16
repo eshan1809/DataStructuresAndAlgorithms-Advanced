@@ -44,6 +44,7 @@ public class largestSquareSub_matrixWithAll1s {
                 arr[i][j] = scn.nextInt();
             }
         }
+        scn.close();
         System.out.println(solution(arr));
     }
 }

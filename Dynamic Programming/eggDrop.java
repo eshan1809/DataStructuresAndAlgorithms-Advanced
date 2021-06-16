@@ -35,6 +35,7 @@ public class eggDrop {
         // n -> number of eggs and k -> number of floors
         int n = scn.nextInt();
         int k = scn.nextInt();
+        scn.close();
         System.out.println(eggDrop(n, k));
     }
 }

@@ -38,6 +38,7 @@ public class K_Concatenation {
             sum += arr[i];
         }
         int k = scn.nextInt();
+        scn.close();
         System.out.println(solution(arr, k, sum));
     }
 }
