@@ -322,7 +322,11 @@ class removeNodeInDoublyLinkedlist {
 
         public int removeNode(Node refNode) {
             // write here code
-            return 0;
+            if (refNode.prev != null)
+                refNode.prev.next = refNode.next;
+            if (refNode.next != null)
+                refNode.next.prev = refNode.prev;
+            return refNode.data;
         }
 
         public int removeNode(int idx) {
