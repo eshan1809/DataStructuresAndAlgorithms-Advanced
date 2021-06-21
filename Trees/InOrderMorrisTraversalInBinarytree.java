@@ -18,8 +18,32 @@ public class InOrderMorrisTraversalInBinarytree {
         }
     }
 
-    public static ArrayList<Integer> morrisInTraversal(TreeNode Treenode) {
-        return null;
+    public static TreeNode getRightMost(TreeNode leftNode, TreeNode curr) {
+        while (leftNode.right != null && leftNode.right != curr)
+            leftNode = leftNode.right;
+        return leftNode;
+    }
+
+    public static ArrayList<Integer> morrisInTraversal(TreeNode node) {
+        ArrayList<Integer> list = new ArrayList<>();
+        TreeNode curr = node;
+        while (curr != null) {
+            if (curr.left == null) {
+                list.add(curr.val);
+                curr = curr.right;
+            } else {
+                TreeNode rightMost = getRightMost(curr.left, curr);
+                if (rightMost.right == null) {
+                    rightMost.right = curr;
+                    curr = curr.left;
+                } else {
+                    rightMost.right = null;
+                    list.add(curr.val);
+                    curr = curr.right;
+                }
+            }
+        }
+        return list;
     }
 
     // input_section=================================================
