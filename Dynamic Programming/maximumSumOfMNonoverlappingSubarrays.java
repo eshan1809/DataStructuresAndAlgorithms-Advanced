@@ -9,17 +9,6 @@ import java.util.*;
 
 public class maximumSumOfMNonoverlappingSubarrays {
 
-    public static int helper(int[] arr, int idx, int m, int k, int[] pSum, int[][] dp) {
-        if (m == 0 || idx >= arr.length)
-            return 0;
-        if (dp[idx][m] == 0) {
-            int exc = 0 + helper(arr, idx + 1, m, k, pSum, dp);
-            int inc = pSum[idx] + helper(arr, idx + k, m - 1, k, pSum, dp);
-            dp[idx][m] = Math.max(inc, exc);
-        }
-        return dp[idx][m];
-    }
-
     public static int solution(int[] arr, int m, int k) {
         // write your code here
         int n = arr.length;
@@ -32,7 +21,19 @@ public class maximumSumOfMNonoverlappingSubarrays {
             sum += arr[i] - arr[i - k];
             pSum[i - k + 1] = sum;
         }
-        return helper(arr, 0, m, k, pSum, new int[n][m + 1]);
+
+        int[][] dp = new int[n][m + 1];
+
+        for (int j = 1; j <= m; j++) {
+            for (int i = n - 1; i >= 0; i--) {
+                if (j * k > n - i)
+                    continue;
+                int exc = i + 1 < n ? dp[i + 1][j] : 0;
+                int inc = pSum[i] + (i + k < n ? dp[i + k][j - 1] : 0);
+                dp[i][j] = Math.max(inc, exc);
+            }
+        }
+        return dp[0][m];
     }
 
     public static void main(String[] args) {
