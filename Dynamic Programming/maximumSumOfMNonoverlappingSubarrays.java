@@ -8,10 +8,24 @@ import java.io.*;
 import java.util.*;
 
 public class maximumSumOfMNonoverlappingSubarrays {
-    public static int solution(int[] arr, int m, int k) {
-        // write your code here
+
+    public static int helper(int[] arr, int idx, int m, int k) {
 
         return 0;
+    }
+
+    public static int solution(int[] arr, int m, int k) {
+        // write your code here
+        int[] pSum = new int[n];
+        int sum = 0;
+        for (int i = 0; i < k; i++)
+            sum += arr[i];
+        psum[0] = sum;
+        for (int i = k; i < n; i++) {
+            sum += arr[i] - arr[i - k];
+            pSum[i] = sum;
+        }
+        return helper(arr, 0, m, k);
     }
 
     public static void main(String[] args) {
