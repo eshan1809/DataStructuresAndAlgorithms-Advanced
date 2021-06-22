@@ -20,11 +20,11 @@ public class uglyNumber {
             int f2 = 2 * dp[p2], f3 = 3 * dp[p3], f5 = 5 * dp[p5];
             dp[i] = Math.min(f2, Math.min(f3, f5));
             if (dp[i] == f2)
-                f2++;
+                p2++;
             if (dp[i] == f3)
-                f3++;
+                p3++;
             if (dp[i] == f5)
-                f5++;
+                p5++;
         }
         return dp[n];
     }
