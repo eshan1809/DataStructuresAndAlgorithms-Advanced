@@ -8,7 +8,8 @@ int next() Moves the pointer to the right, then returns the number at the pointe
 3. You may assume that next() calls will always be valid. That is, there will be at least a next number in the in-order traversal when next() is called.
 */
 
-import java.util.*;
+import java.util.Scanner;
+import java.util.LinkedList;
 
 public class binarySearchTreeIterator2 {
     public static Scanner scn = new Scanner(System.in);
@@ -24,29 +25,28 @@ public class binarySearchTreeIterator2 {
     }
 
     public static class BSTIterator {
-        List<Integer> list;
-        int idx;
+        LinkedList<TreeNode> list;
 
-        private void inOrder(TreeNode root, List<Integer> list) {
-            if (root == null)
-                return;
-            inOrder(root.left, list);
-            list.add(root.val);
-            inOrder(root.right, list);
+        private void addAllLeft(TreeNode node) {
+            while (node != null) {
+                list.addFirst(node);
+                node = node.left;
+            }
         }
 
         public BSTIterator(TreeNode root) {
-            list = new ArrayList<>();
-            idx = 0;
-            inOrder(root, list);
+            list = new LinkedList<>();
+            addAllLeft(root);
         }
 
         public int next() {
-            return list.get(idx++);
+            TreeNode node = list.removeFirst();
+            addAllLeft(node.right);
+            return node.val;
         }
 
         public boolean hasNext() {
-            return idx < list.size();
+            return list.size() > 0;
         }
     }
 
