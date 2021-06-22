@@ -16,10 +16,45 @@ import java.io.*;
 import java.util.*;
 
 public class scrambleString {
+
+    public static boolean helper(String s1, String s2, int si1, int si2, int len, Boolean[][][] dp) {
+        if (dp[si1][si2][len] != null)
+            return dp[si1][si2][len];
+
+        if (s1.substring(si1, si1 + len).equals(s2.substring(si2, si2 + len))) {
+            dp[si1][si2][len] = true;
+            return true;
+        }
+
+        for (int i = 1; i < len; i++) {
+            if ((helper(s1, s2, si1, si2, i, dp) && helper(s1, s2, si1 + i, si2 + i, len - i, dp))
+                    || (helper(s1, s2, si1, si2 + len - i, i, dp) && helper(s1, s2, si1 + i, si2, len - i, dp))) {
+                dp[si1][si2][len] = true;
+                return true;
+            }
+        }
+        dp[si1][si2][len] = false;
+        return false;
+    }
+
     public static boolean isScrambleTab(String s1, String s2) {
         // write your code here
-
-        return false;
+        int n = s1.length();
+        if (n != s2.length())
+            return false;
+        Map<Character, Integer> map = new HashMap<>();
+        for (char ch : s1.toCharArray())
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        for (char ch : s2.toCharArray()) {
+            if (map.containsKey(ch)) {
+                if (map.get(ch) == 1)
+                    map.remove(ch);
+                else
+                    map.put(ch, map.get(ch) - 1);
+            } else
+                return false;
+        }
+        return helper(s1, s2, 0, 0, n, new Boolean[n][n][n + 1]);
     }
 
     public static void main(String[] args) {
