@@ -10,6 +10,7 @@ import java.io.*;
 import java.util.*;
 
 public class superUglyNumber {
+
     static class Pair implements Comparable<Pair> {
         int prime, ptr, val;
 
@@ -20,8 +21,6 @@ public class superUglyNumber {
         }
 
         public int compareTo(Pair o) {
-            if (this.val == o.val)
-                return this.prime - o.prime;
             return this.val - o.val;
         }
     }
@@ -30,18 +29,19 @@ public class superUglyNumber {
         // write your code here
         PriorityQueue<Pair> pq = new PriorityQueue<>();
         for (int i : primes)
-            pq.add(new Pair(i, 1, i));
-        int[] dp = new int[n + 1];
-        dp[1] = 1;
-        for (int i = 2; i <= n; i++) {
-            dp[i] = pq.peek().val;
-            for (Pair p : pq)
-                if (p.val == dp[i]) {
-                    p.ptr++;
-                    p.val = p.ptr * p.prime;
-                }
+            pq.add(new Pair(i, 0, i));
+        int[] dp = new int[n];
+        dp[0] = 1;
+        for (int i = 1; i < n; i++) {
+            while (dp[i - 1] == pq.peek().val) {
+                Pair p = pq.remove();
+                pq.add(new Pair(p.prime, p.ptr + 1, p.prime * dp[p.ptr]));
+            }
+            Pair p = pq.remove();
+            dp[i] = p.val;
+            pq.add(new Pair(p.prime, p.ptr + 1, p.prime * dp[p.ptr]));
         }
-        return dp[n];
+        return dp[n - 1];
     }
 
     public static void main(String[] args) {
