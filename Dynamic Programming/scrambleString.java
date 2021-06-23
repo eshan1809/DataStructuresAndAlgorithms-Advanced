@@ -37,7 +37,7 @@ public class scrambleString {
         return false;
     }
 
-    public static boolean isScrambleTab(String s1, String s2) {
+    public static boolean isScramble(String s1, String s2) {
         // write your code here
         int n = s1.length();
         if (n != s2.length())
@@ -62,6 +62,6 @@ public class scrambleString {
         String s1 = scn.next();
         String s2 = scn.next();
         scn.close();
-        System.out.println(isScrambleTab(s1, s2));
+        System.out.println(isScramble(s1, s2));
     }
 }
