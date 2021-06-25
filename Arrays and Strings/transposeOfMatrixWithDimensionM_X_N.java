@@ -32,7 +32,7 @@ public class transposeOfMatrixWithDimensionM_X_N {
                 matrix[i][j] = scn.nextInt();
             }
         }
-
+        scn.close();
         int[][] res = transpose(matrix);
 
         for (int i = 0; i < res.length; i++) {
