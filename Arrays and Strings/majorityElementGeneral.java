@@ -30,6 +30,7 @@ public class majorityElementGeneral {
             arr[i] = scn.nextInt();
         }
         int k = scn.nextInt();
+        scn.close();
         ArrayList<Integer> res = majorityElement(arr, k);
         System.out.println(res);
     }
