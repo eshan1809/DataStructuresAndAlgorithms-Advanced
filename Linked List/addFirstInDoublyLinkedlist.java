@@ -41,7 +41,7 @@ public class addFirstInDoublyLinkedlist {
         public void addFirst(int val) {
             size++;
             if (head == null) {
-                head.data = val;
+                head = new Node(val);
                 tail = head;
                 return;
             }
