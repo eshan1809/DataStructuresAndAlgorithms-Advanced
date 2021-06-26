@@ -1,14 +1,18 @@
 /*
-1. Given an Integer 'n'.
-2. Print all primes from 2 to 'n'.
-3. Portal is not forced you, but try to submit the problem in less than n.root(n) complexity.
+1. Generate all primes between 'a'  and 'b'(both are included).
+2. Print every number in new line.
+3. Allowed time Complexity : O(nlog(log n)), where n = b - a.
+4. Allowed Space Complexity : O(n), where n = b -a;
+Note : Please focus on constraints.
 */
 
 import java.util.*;
 
-public class sieveOfEratosthenes {
-    // ~~~~~~~~~~~~~~~~~~User Section~~~~~~~~~~~~~~~~
-    public static void printPrimeUsingSieve(int n) {
+public class segmentedSieve {
+
+    // ~~~~~~~~~~~~~User Section~~~~~~~~~~~~
+
+    public static void segmentedSieveAlgo(int a, int b) {
         // write your code here
         boolean[] isPrime = new boolean[n + 1];
         Arrays.fill(isPrime, true);
@@ -22,11 +26,11 @@ public class sieveOfEratosthenes {
                 System.out.print(i + " ");
     }
 
-    // ~~~~~~~~~~~~~~~~Input Management~~~~~~~~~~~~~~
+    // ~~~~~~~~~~~~Input Management~~~~~~~~~~~
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
-        scn.close();
-        printPrimeUsingSieve(n);
+        int a = scn.nextInt();
+        int b = scn.nextInt();
+        segmentedSieveAlgo(a, b);
     }
 }
