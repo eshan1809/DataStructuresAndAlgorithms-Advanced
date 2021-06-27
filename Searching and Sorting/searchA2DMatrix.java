@@ -15,7 +15,16 @@ public class searchA2DMatrix {
      */
     public static boolean search(int[][] matrix, int target) {
         // write your code here
-        return false;
+        int tr = -1;
+        for (int i = 0; i < matrix.length; i++) {
+            if (target <= matrix[i][matrix[0].length - 1]) {
+                tr = i;
+                break;
+            }
+        }
+        if (tr == -1)
+            return false;
+        return Arrays.binarySearch(matrix[tr], target) >= 0;
     }
 
     public static void main(String[] args) {
