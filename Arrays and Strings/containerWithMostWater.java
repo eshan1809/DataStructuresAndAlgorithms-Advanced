@@ -45,7 +45,7 @@ public class containerWithMostWater {
         for (int i = 0; i < n; i++) {
             heights[i] = scn.nextInt();
         }
-
+        scn.close();
         int res = mostWater(heights);
         System.out.println(res);
     }

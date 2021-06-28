@@ -39,7 +39,7 @@ public class wiggleSort1 {
         for (int i = 0; i < n; i++) {
             arr[i] = scn.nextInt();
         }
-
+        scn.close();
         wiggleSort(arr);
 
         for (int val : arr) {

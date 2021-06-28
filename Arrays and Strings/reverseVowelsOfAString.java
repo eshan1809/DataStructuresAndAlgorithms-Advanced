@@ -6,7 +6,7 @@
 
 import java.util.*;
 
-public class Main {
+public class reverseVowelsOfAString {
     // ~~~~~~~~~~~~~~User Section~~~~~~~~~~~~
     public static boolean isVowel(char ch) {
         return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'

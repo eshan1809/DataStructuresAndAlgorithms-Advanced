@@ -31,7 +31,7 @@ public class maxChunksToMakeArraySorted {
         for (int i = 0; i < n; i++) {
             arr[i] = scn.nextInt();
         }
-
+        scn.close();
         int res = maxChunksToSorted(arr);
         System.out.println(res);
     }
