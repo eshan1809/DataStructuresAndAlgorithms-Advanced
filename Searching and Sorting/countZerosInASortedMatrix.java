@@ -3,7 +3,6 @@ Given a Binary Square Matrix where each row and column of the matrix is sorted i
 */
 
 import java.util.*;
-import java.io.*;
 
 public class countZerosInASortedMatrix {
 

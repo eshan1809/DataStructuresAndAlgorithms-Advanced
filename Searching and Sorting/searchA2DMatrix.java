@@ -5,7 +5,6 @@ b). The first integer of each row is greater than the last integer of the previo
 */
 
 import java.util.*;
-import java.io.*;
 
 public class searchA2DMatrix {
 

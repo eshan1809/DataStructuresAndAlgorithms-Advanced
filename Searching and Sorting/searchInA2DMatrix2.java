@@ -5,7 +5,6 @@ b). Integers in each column are sorted in ascending from top to bottom.
 */
 
 import java.util.*;
-import java.io.*;
 
 public class searchInA2DMatrix2 {
 
