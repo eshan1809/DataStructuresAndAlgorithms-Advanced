@@ -9,16 +9,15 @@ import java.util.*;
 public class firstBadVersion {
     public static int solution(int n) {
         // write your code here
-        int lo = 1, hi = n, ans = n;
-        while (lo <= hi) {
-            int mid = (lo + hi) / 2;
-            if (isBadVersion(mid)) {
-                ans = mid;
-                hi = mid - 1;
-            } else
+        int lo = 1, hi = n;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (isBadVersion(mid))
+                hi = mid;
+            else
                 lo = mid + 1;
         }
-        return ans;
+        return lo;
     }
 
     static int bad = 0;
