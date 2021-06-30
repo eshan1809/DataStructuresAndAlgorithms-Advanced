@@ -11,15 +11,17 @@ public class medianOfTwoSortedArrays {
         int n1 = nums1.length, n2 = nums2.length, lo = 0, hi = n1, noe = n1 + n2;
         while (lo <= hi) {
             int aleft = (lo + hi) / 2, bleft = (noe + 1) / 2 - aleft;
+            int firstLeft = aleft > 0 ? nums1[aleft - 1] : Integer.MIN_VALUE;
+            int secondRight = bleft < n2 ? nums2[bleft] : Integer.MAX_VALUE;
+            int firstRight = aleft < n1 ? nums1[aleft] : Integer.MAX_VALUE;
+            int secondLeft = bleft > 0 ? nums2[bleft - 1] : Integer.MIN_VALUE;
             // valid segreagation
-            if ((bleft >= n2 || aleft <= 0 || nums1[aleft - 1] <= nums2[bleft])
-                    && (aleft >= n1 || bleft <= 0 || nums1[aleft] >= nums2[bleft - 1])) {
+            if (firstLeft <= secondRight && firstRight >= secondLeft) {
                 if (noe % 2 == 0)
-                    return (double) (Math.max(nums1[aleft - 1], nums2[bleft - 1])
-                            + Math.min(nums1[aleft], nums2[bleft])) / 2;
+                    return (double) (Math.max(firstLeft, secondLeft) + Math.min(firstRight, secondRight)) / 2;
                 else
-                    return (double) Math.max(nums1[aleft - 1], nums2[bleft - 1]);
-            } else if (nums1[aleft - 1] > nums2[bleft])
+                    return (double) Math.max(firstLeft, secondLeft);
+            } else if (firstLeft > secondRight)
                 hi = aleft - 1;
             else
                 lo = aleft + 1;
