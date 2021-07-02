@@ -8,15 +8,11 @@ import java.util.*;
 public class GrayCode {
     public static List<Integer> grayCode(int n) {
         List<Integer> ans = new ArrayList<>();
-        if (n == 0) {
-            ans.add(0);
-            return ans;
-        }
         backtrack(ans, n);
         return ans;
     }
 
-    static int temp;
+    static int temp = 0;
 
     private static void backtrack(List<Integer> ans, int n) {
         if (n == 0) {
