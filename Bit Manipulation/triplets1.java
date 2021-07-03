@@ -23,7 +23,7 @@ public class triplets1 {
                     ans += j - i;
             }
         }
-        return ans;
+        System.out.println(ans);
     }
 
     public static void main(String[] args) {
