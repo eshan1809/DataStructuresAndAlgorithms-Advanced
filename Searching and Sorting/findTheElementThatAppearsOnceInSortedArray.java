@@ -3,7 +3,6 @@ Given a sorted array arr[] of size N. Find the element that appears only once in
 */
 
 import java.util.*;
-import java.io.*;
 
 public class findTheElementThatAppearsOnceInSortedArray {
 
