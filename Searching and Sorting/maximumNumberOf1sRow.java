@@ -3,7 +3,6 @@ Given a boolean 2D array, where each row is sorted. Find the row with the maximu
 */
 
 import java.util.*;
-import java.io.*;
 
 public class maximumNumberOf1sRow {
 

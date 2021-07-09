@@ -6,7 +6,6 @@
 */
 
 import java.util.*;
-import java.io.*;
 
 public class heaters {
     public static int findRadius(int[] houses, int[] heaters) {

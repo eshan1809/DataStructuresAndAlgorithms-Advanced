@@ -3,7 +3,6 @@ Given a sorted array of size N. Count the number of distinct absolute values pre
 */
 
 import java.util.*;
-import java.io.*;
 
 public class distinctAbsoluteArrayElements {
 
