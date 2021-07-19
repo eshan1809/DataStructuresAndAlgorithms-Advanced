@@ -22,7 +22,7 @@ Note -> Use the code snippet and follow the algorithm discussed in question vide
 
 import java.util.*;
 
-public class designLRUChache {
+public class designLRUChache2 {
     public static class LRUCache {
         LinkedHashMap<Integer, Integer> map;
         int capacity;
