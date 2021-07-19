@@ -21,29 +21,81 @@ Note -> Use the code snippet. The judge can't force you but the intention is to 
 
 import java.util.*;
 
-public class designLRUChache2 {
+public class designLRUChache {
+    static class Node {
+        int key, val;
+        Node prev, next;
+
+        Node(int val) {
+            this.val = val;
+        }
+
+        Node(int key, int val) {
+            this.key = key;
+            this.val = val;
+        }
+
+        Node(int key, int val, Node prev, Node next) {
+            this.key = key;
+            this.val = val;
+            this.prev = prev;
+            this.next = next;
+        }
+    }
+
     public static class LRUCache {
-        LinkedHashMap<Integer, Integer> map;
-        int capacity;
-        int size;
+        Node head, tail;
+        int size, capacity;
+        Map<Integer, Node> map;
 
         public LRUCache(int capacity) {
+            head = new Node(-1);
+            tail = new Node(-1);
+            head.next = tail;
+            tail.prev = head;
             this.capacity = capacity;
             this.size = 0;
-            map = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
-                public boolean removeEldestEntry(Map.Entry eldest) {
-                    return size() > capacity;
-                }
-            };
+            map = new HashMap<>();
         }
 
         public int get(int key) {
-            return map.getOrDefault(key, -1);
+            if (!map.containsKey(key))
+                return -1;
+            Node node = map.get(key);
+            removeNode(node);
+            addNode(node);
+            return node.val;
         }
 
         // appp name, app state
         public void put(int key, int value) {
-            map.put(key, value);
+            if (map.containsKey(key)) {
+                removeNode(map.get(key));
+                map.get(key).val = value;
+                addNode(map.get(key));
+                return;
+            }
+            size++;
+            map.put(key, new Node(key, value));
+            addNode(map.get(key));
+            if (size > capacity) {
+                size--;
+                Node node = tail.prev;
+                map.remove(node.key);
+                removeNode(node);
+            }
+        }
+
+        private void removeNode(Node node) {
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+        }
+
+        private void addNode(Node node) {
+            node.next = head.next;
+            head.next.prev = node;
+            node.prev = head;
+            head.next = node;
         }
 
     }
