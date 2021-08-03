@@ -8,50 +8,60 @@ Implement the WordDictionary class:
 */
 
 import java.io.*;
-import java.util.*;
 
 public class designAddAndSearchWordsDataStructure {
     public static class WordDictionary {
 
-        List<String> list;
-        HashMap<String, Boolean> ans;
-        boolean canUse;
+        public class Node {
+            Node[] children;
+            boolean isEnd;
 
-        /** Initialize your data structure here. */
-        public WordDictionary() {
-            list = new ArrayList();
-            ans = new HashMap();
-        }
-
-        public void addWord(String word) {
-            list.add(word);
-            canUse = false;
-        }
-
-        public boolean search(String word) {
-            if (canUse && ans.containsKey(word))
-                return ans.get(word);
-
-            canUse = true;
-            for (String str : list) {
-                if (str.length() == word.length()) {
-                    int flag = 0;
-                    for (int i = 0; i < str.length(); i++) {
-                        if (word.charAt(i) == '.')
-                            continue;
-                        if (word.charAt(i) != str.charAt(i)) {
-                            flag = 1;
-                            break;
-                        }
-                    }
-                    if (flag == 0) {
-                        ans.put(word, true);
-                        return true;
-                    }
-                }
+            Node() {
+                children = new Node[26];
             }
-            ans.put(word, false);
+        }
+
+        final Node root;
+
+        public WordDictionary() {
+            root = new Node();
+        }
+
+        /** Adds a word into the data structure. */
+        public void addWord(String word) {
+            Node curr = root;
+            for (char ch : word.toCharArray()) {
+                if (curr.children[ch - 'a'] == null)
+                    curr.children[ch - 'a'] = new Node();
+                curr = curr.children[ch - 'a'];
+            }
+            curr.isEnd = true;
+        }
+
+        public boolean searchHelper(Node curr, String word, int idx) {
+            if (idx == word.length())
+                return curr.isEnd;
+            char ch = word.charAt(idx);
+            if (ch == '.') {
+                for (int i = 0; i < 26; i++)
+                    if (curr.children[i] != null)
+                        if (searchHelper(curr.children[i], word, idx + 1))
+                            return true;
+            } else {
+                if (curr.children[ch - 'a'] == null)
+                    return false;
+                else
+                    return searchHelper(curr.children[ch - 'a'], word, idx + 1);
+            }
             return false;
+        }
+
+        /**
+         * Returns if the word is in the data structure. A word could contain the dot
+         * character '.' to represent any one letter.
+         */
+        public boolean search(String word) {
+            return searchHelper(root, word, 0);
         }
     }
 
