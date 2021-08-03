@@ -13,18 +13,44 @@ import java.util.*;
 public class designAddAndSearchWordsDataStructure {
     public static class WordDictionary {
 
+        List<String> list;
+        HashMap<String, Boolean> ans;
+        boolean canUse;
+
+        /** Initialize your data structure here. */
         public WordDictionary() {
+            list = new ArrayList();
+            ans = new HashMap();
         }
 
-        /** Adds a word into the data structure. */
         public void addWord(String word) {
+            list.add(word);
+            canUse = false;
         }
 
-        /**
-         * Returns if the word is in the data structure. A word could contain the dot
-         * character '.' to represent any one letter.
-         */
         public boolean search(String word) {
+            if (canUse && ans.containsKey(word))
+                return ans.get(word);
+
+            canUse = true;
+            for (String str : list) {
+                if (str.length() == word.length()) {
+                    int flag = 0;
+                    for (int i = 0; i < str.length(); i++) {
+                        if (word.charAt(i) == '.')
+                            continue;
+                        if (word.charAt(i) != str.charAt(i)) {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    if (flag == 0) {
+                        ans.put(word, true);
+                        return true;
+                    }
+                }
+            }
+            ans.put(word, false);
             return false;
         }
     }
