@@ -44,7 +44,7 @@ public class countPairsWithXORInARange {
             return 0;
         if (idx < 0)
             return getCount(curr);
-        int x = (val & (1 << idx)) > 0 ? 1 : 0, lx = (limit & (1 << idx)) > 0 ? 1 : 0, ans = 0;
+        int x = (val & (1 << idx)) > 0 ? 1 : 0, lx = (limit & (1 << idx)) > 0 ? 1 : 0;
         if (x == 0) {
             if (lx == 0)
                 return query(curr.left, limit, val, idx - 1);
