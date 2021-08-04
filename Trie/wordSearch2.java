@@ -31,10 +31,12 @@ public class wordSearch2 {
         curr.isEnd = true;
     }
 
-    private static void search(Node curr, char[][] board, int r, int c, String ans, HashSet<String> set,
+    private static void search(Node curr, char[][] board, int r, int c, String ans, ArrayList<String> list,
             boolean[][] visited) {
-        if (curr.isEnd)
-            set.add(ans);
+        if (curr.isEnd) {
+            list.add(ans);
+            curr.isEnd = false;
+        }
 
         if (r < 0 || c < 0 || r == board.length || c == board[0].length || visited[r][c])
             return;
@@ -42,10 +44,10 @@ public class wordSearch2 {
         char ch = board[r][c];
         visited[r][c] = true;
         if (curr.children[ch - 'a'] != null) {
-            search(curr.children[ch - 'a'], board, r - 1, c, ans + ch, set, visited);
-            search(curr.children[ch - 'a'], board, r, c - 1, ans + ch, set, visited);
-            search(curr.children[ch - 'a'], board, r + 1, c, ans + ch, set, visited);
-            search(curr.children[ch - 'a'], board, r, c + 1, ans + ch, set, visited);
+            search(curr.children[ch - 'a'], board, r - 1, c, ans + ch, list, visited);
+            search(curr.children[ch - 'a'], board, r, c - 1, ans + ch, list, visited);
+            search(curr.children[ch - 'a'], board, r + 1, c, ans + ch, list, visited);
+            search(curr.children[ch - 'a'], board, r, c + 1, ans + ch, list, visited);
         }
         visited[r][c] = false;
     }
@@ -57,13 +59,13 @@ public class wordSearch2 {
             insert(word);
 
         int n = board.length, m = board[0].length;
-        HashSet<String> set = new HashSet<>();
+        ArrayList<String> list = new ArrayList<>();
 
         for (int i = 0; i < n; i++)
             for (int j = 0; j < m; j++)
-                search(root, board, i, j, "", set, new boolean[n][m]);
+                search(root, board, i, j, "", list, new boolean[n][m]);
 
-        return new ArrayList<>(set);
+        return list;
     }
 
     public static void main(String[] args) throws Exception {
