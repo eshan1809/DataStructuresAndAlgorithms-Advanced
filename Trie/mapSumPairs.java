@@ -5,20 +5,54 @@ Implement the MapSum class:
 3. int sum(string prefix) Returns the sum of all the pairs' value whose key starts with the prefix.
 */
 
+import java.io.*;
+
 public class mapSumPairs {
     public static class MapSum {
+        class Node {
+            Node[] children;
+            int sum;
+
+            Node() {
+                children = new Node[26];
+                sum = 0;
+            }
+        }
+
+        Node root;
 
         /** Initialize your data structure here. */
         public MapSum() {
-
+            root = new Node();
         }
 
         public void insert(String key, int val) {
-
+            Node curr = root;
+            for (char ch : key.toCharArray()) {
+                if (curr.children[ch - 'a'] == null)
+                    curr.children[ch - 'a'] = new Node();
+                curr = curr.children[ch - 'a'];
+            }
+            curr.sum = val;
         }
 
         public int sum(String prefix) {
+            Node curr = root;
+            for (char ch : prefix.toCharArray()) {
+                if (curr.children[ch - 'a'] == null)
+                    curr.children[ch - 'a'] = new Node();
+                curr = curr.children[ch - 'a'];
+            }
+            return getValue(curr);
+        }
 
+        public int getValue(Node curr) {
+            if (curr == null)
+                return 0;
+            int sum = curr.sum;
+            for (int i = 0; i < 26; i++)
+                sum += getValue(curr.children[i]);
+            return sum;
         }
     }
 
