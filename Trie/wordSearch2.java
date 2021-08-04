@@ -10,61 +10,60 @@ import java.net.Inet4Address;
 import java.util.*;
 
 public class wordSearch2 {
-    public static boolean boardContains(char[][] board, String word, int r, int c, int idx, boolean[][] visited) {
-        if (idx == word.length()) {
-            return true;
+    static class Node {
+        Node[] children;
+        boolean isEnd;
+
+        Node() {
+            children = new Node[26];
         }
-        if (r - 1 >= 0 && board[r - 1][c] == word.charAt(idx) && visited[r - 1][c] == false) {
-            visited[r - 1][c] = true;
-            if (boardContains(board, word, r - 1, c, idx + 1, visited))
-                return true;
-            visited[r - 1][c] = false;
+    }
+
+    static Node root;
+
+    private static void insert(String word) {
+        Node curr = root;
+        for (char ch : word.toCharArray()) {
+            if (curr.children[ch - 'a'] == null)
+                curr.children[ch - 'a'] = new Node();
+            curr = curr.children[ch - 'a'];
         }
-        if (c - 1 >= 0 && board[r][c - 1] == word.charAt(idx) && visited[r][c - 1] == false) {
-            visited[r][c - 1] = true;
-            if (boardContains(board, word, r, c - 1, idx + 1, visited))
-                return true;
-            visited[r][c - 1] = false;
+        curr.isEnd = true;
+    }
+
+    private static void search(Node curr, char[][] board, int r, int c, String ans, HashSet<String> set,
+            boolean[][] visited) {
+        if (curr.isEnd)
+            set.add(ans);
+
+        if (r < 0 || c < 0 || r == board.length || c == board[0].length || visited[r][c])
+            return;
+
+        char ch = board[r][c];
+        visited[r][c] = true;
+        if (curr.children[ch - 'a'] != null) {
+            search(curr.children[ch - 'a'], board, r - 1, c, ans + ch, set, visited);
+            search(curr.children[ch - 'a'], board, r, c - 1, ans + ch, set, visited);
+            search(curr.children[ch - 'a'], board, r + 1, c, ans + ch, set, visited);
+            search(curr.children[ch - 'a'], board, r, c + 1, ans + ch, set, visited);
         }
-        if (r + 1 < board.length && board[r + 1][c] == word.charAt(idx) && visited[r + 1][c] == false) {
-            visited[r + 1][c] = true;
-            if (boardContains(board, word, r + 1, c, idx + 1, visited))
-                return true;
-            visited[r + 1][c] = false;
-        }
-        if (c + 1 < board[0].length && board[r][c + 1] == word.charAt(idx) && visited[r][c + 1] == false) {
-            visited[r][c + 1] = true;
-            if (boardContains(board, word, r, c + 1, idx + 1, visited))
-                return true;
-            visited[r][c + 1] = false;
-        }
-        return false;
+        visited[r][c] = false;
     }
 
     public static ArrayList<String> findWords(char[][] board, String[] words) {
-        ArrayList<String> list = new ArrayList<>();
+        root = new Node();
+
+        for (String word : words)
+            insert(word);
+
         int n = board.length, m = board[0].length;
-        for (String word : words) {
-            boolean[][] visited = new boolean[n][m];
-            int flag = 0;
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
-                    if (board[i][j] == word.charAt(0)) {
-                        visited[i][j] = true;
-                        if (boardContains(board, word, i, j, 1, visited))
-                            flag = 1;
-                        visited[i][j] = false;
-                    }
-                    if (flag == 1)
-                        break;
-                }
-                if (flag == 1)
-                    break;
-            }
-            if (flag == 1)
-                list.add(word);
-        }
-        return list;
+        HashSet<String> set = new HashSet<>();
+
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
+                search(root, board, i, j, "", set, new boolean[n][m]);
+
+        return new ArrayList<>(set);
     }
 
     public static void main(String[] args) throws Exception {
