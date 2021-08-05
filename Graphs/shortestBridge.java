@@ -23,7 +23,7 @@ public class shortestBridge {
             }
         }
 
-        System.out.println(shortestBridge(arr));
+        System.out.println(ShortestBridge(arr));
 
     }
 
@@ -52,7 +52,6 @@ public class shortestBridge {
 
     private static void change(int[][] grid, int i, int j, int n) {
         int[][] dirs = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
-        boolean[][] visited = new boolean[n][n];
         Queue<Pair1> q = new ArrayDeque<>();
         q.add(new Pair1(i, j));
         while (!q.isEmpty()) {
@@ -84,8 +83,8 @@ public class shortestBridge {
         return null;
     }
 
-    public static int shortestBridge(int[][] grid) {
-        int n = grid.length, minCost = 0;
+    public static int ShortestBridge(int[][] grid) {
+        int n = grid.length;
         int[] arr = changeOneIsland(grid, n);
         return solution(grid, n, arr[0], arr[1]);
     }

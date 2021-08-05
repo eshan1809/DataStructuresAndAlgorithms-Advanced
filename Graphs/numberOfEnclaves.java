@@ -3,11 +3,9 @@ You are given an m * n binary matrix grid, where 0 represents a sea cell and 1 r
 Return the number of land cells in grid for which we cannot walk off the boundary of the grid in any number of moves.
 */
 
-import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.*;
 
 class numberOfEnclaves {
 
