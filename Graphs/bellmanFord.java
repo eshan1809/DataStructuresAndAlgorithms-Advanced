@@ -8,48 +8,34 @@ Note : use bellman ford algo.
 import java.util.*;
 
 public class bellmanFord {
-    private static class Edge implements Comparable<Edge> {
-        int vt, nbr, wt;
-
-        Edge(int vt, int nbr, int wt) {
-            this.vt = vt;
-            this.nbr = nbr;
-            this.wt = wt;
-        }
-
-        public int compareTo(Edge o) {
-            return this.wt - o.wt;
-        }
-    }
-
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
-        int vtces = scn.nextInt(), edges = scn.nextInt();
-        ArrayList<Edge>[] graph = new ArrayList[vtces];
-        for (int i = 0; i < vtces; i++)
-            graph[i] = new ArrayList<>();
-        for (int i = 0; i < edges; i++) {
-            int v1 = scn.nextInt(), v2 = scn.nextInt(), wt = scn.nextInt();
-            graph[v1 - 1].add(new Edge(v1, v2, wt));
-            graph[v2 - 1].add(new Edge(v2, v1, wt));
+        int n = scn.nextInt(), m = scn.nextInt();
+
+        int[][] arr = new int[m][3];
+        for (int i = 0; i < m; i++) {
+            int v1 = scn.nextInt(), v2 = scn.nextInt(), w = scn.nextInt();
+            arr[i][0] = v1 - 1;
+            arr[i][1] = v2 - 1;
+            arr[i][2] = w;
         }
         scn.close();
-        boolean[] visited = new boolean[vtces];
-        int[] arr = new int[vtces - 1];
-        PriorityQueue<Edge> pq = new PriorityQueue<>();
-        pq.add(new Edge(1, 1, 0));
-        while (pq.size() > 0) {
-            Edge rem = pq.remove();
-            if (visited[rem.nbr - 1])
-                continue;
-            visited[rem.nbr - 1] = true;
-            if (rem.nbr > 1)
-                arr[rem.nbr - 2] = rem.wt;
-            for (Edge e : graph[rem.nbr - 1])
-                if (!visited[e.nbr - 1])
-                    pq.add(new Edge(rem.nbr, e.nbr, rem.wt + e.wt));
+
+        int[] ans = new int[n];
+        Arrays.fill(ans, Integer.MAX_VALUE);
+        ans[0] = 0;
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < m; j++) {
+                int v1 = arr[j][0], v2 = arr[j][1], w = arr[j][2];
+                if (ans[v1] == Integer.MAX_VALUE)
+                    continue;
+                if (ans[v1] + w < ans[v2])
+                    ans[v2] = ans[v1] + w;
+            }
         }
-        for (int i : arr)
-            System.out.print(i + " ");
+
+        for (int i = 1; i < n; i++)
+            System.out.print(Math.min(ans[i], 1000000000) + " ");
     }
 }
