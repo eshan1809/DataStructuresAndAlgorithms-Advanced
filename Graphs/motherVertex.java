@@ -30,10 +30,22 @@ public class motherVertex {
     }
 
     public static int findMotherVertex(int N, ArrayList<ArrayList<Integer>> adj) {
+        boolean[] visited = new boolean[N];
+        Stack<Integer> st = new Stack<>();
         for (int i = 0; i < N; i++)
-            if (bfs(N, adj, i) == N)
-                return i + 1;
-        return -1;
+            if (!visited[i])
+                dfs(adj, i, visited, st);
+
+        return bfs(N, adj, st.peek()) == N ? st.peek() + 1 : -1;
+    }
+
+    private static void dfs(ArrayList<ArrayList<Integer>> adj, int src, boolean[] visited, Stack<Integer> st) {
+        if (visited[src])
+            return;
+        visited[src] = true;
+        for (int i : adj.get(src))
+            dfs(adj, i, visited, st);
+        st.push(src);
     }
 
     private static int bfs(int N, ArrayList<ArrayList<Integer>> adj, int src) {
