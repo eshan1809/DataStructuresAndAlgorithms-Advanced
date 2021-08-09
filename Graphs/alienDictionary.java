@@ -4,7 +4,6 @@ Return a string of the unique letters in the new alien language sorted in lexico
 */
 
 import java.io.BufferedReader;
-import java.io.CharConversionException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
