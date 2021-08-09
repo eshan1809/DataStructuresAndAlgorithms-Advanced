@@ -4,7 +4,6 @@
 3. Every ith character in both the subsequences must have different indices in the original string.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class longestRepeatingSubsequence {
@@ -26,6 +25,7 @@ public class longestRepeatingSubsequence {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         String str = scn.next();
+        scn.close();
         System.out.println(solution(str));
     }
 }

@@ -4,7 +4,6 @@
 3. The subarray must have at least k elements.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class maximumSumSubarrayWithAtLeast_K_Elements {
@@ -36,6 +35,7 @@ public class maximumSumSubarrayWithAtLeast_K_Elements {
             arr[i] = scn.nextInt();
         }
         int k = scn.nextInt();
+        scn.close();
         System.out.println(solution(arr, k));
     }
 }

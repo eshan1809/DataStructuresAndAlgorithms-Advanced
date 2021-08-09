@@ -12,7 +12,6 @@ We can scramble a string s to get a string t using the following algorithm:
 Given two strings s1 and s2 of the same length, return true if s2 is a scrambled string of s1, otherwise, return false.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class scrambleString {

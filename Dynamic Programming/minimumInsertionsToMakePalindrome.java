@@ -3,7 +3,6 @@
 2. You have to find the minimum number of characters to be inserted to convert it to a palindrome.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class minimumInsertionsToMakePalindrome {

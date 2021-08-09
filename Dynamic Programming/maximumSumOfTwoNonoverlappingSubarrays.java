@@ -4,7 +4,6 @@
 3. One subarray must of length X and the other must be of length Y.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class maximumSumOfTwoNonoverlappingSubarrays {

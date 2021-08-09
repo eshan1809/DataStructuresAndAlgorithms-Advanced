@@ -5,7 +5,6 @@
 3. You have to find the maximum subarray sum in arr2.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class K_Concatenation {

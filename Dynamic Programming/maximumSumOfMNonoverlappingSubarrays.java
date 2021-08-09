@@ -4,7 +4,6 @@
 3. The size of the given array(arr) is greater than M*K.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class maximumSumOfMNonoverlappingSubarrays {

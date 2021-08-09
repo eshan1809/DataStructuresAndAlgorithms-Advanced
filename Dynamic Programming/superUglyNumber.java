@@ -6,7 +6,6 @@
 Assumption -> 1 is the first super ugly number.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class superUglyNumber {

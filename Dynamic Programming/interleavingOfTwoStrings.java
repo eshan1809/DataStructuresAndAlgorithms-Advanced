@@ -4,7 +4,6 @@
 3. s3 is interleaving if it contains all characters of s1 and s2, and order of all characters in individual string is preserved.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class interleavingOfTwoStrings {

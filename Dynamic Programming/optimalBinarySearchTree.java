@@ -7,7 +7,6 @@
 4. You have to find the minimum cost of all searches.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class optimalBinarySearchTree {
@@ -47,6 +46,7 @@ public class optimalBinarySearchTree {
         for (int i = 0; i < n; i++) {
             frequency[i] = scn.nextInt();
         }
+        scn.close();
         optimalbst(keys, frequency, n);
     }
 

@@ -6,7 +6,6 @@
 Note -> The knight continues moving until it has made exactly K moves or has moved off the chessboard.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class probabilityOfKnightInTheChessboard {
@@ -83,6 +82,7 @@ public class probabilityOfKnightInTheChessboard {
         int k = scn.nextInt();
         int r = scn.nextInt();
         int c = scn.nextInt();
+        scn.close();
         solution(r, c, n, k);
     }
 }

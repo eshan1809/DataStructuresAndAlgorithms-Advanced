@@ -3,7 +3,6 @@
 2. You are required to print the length of the longest common substring of two strings.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class longestCommonSubstring {
@@ -25,6 +24,7 @@ public class longestCommonSubstring {
 		Scanner scn = new Scanner(System.in);
 		String s1 = scn.next();
 		String s2 = scn.next();
+		scn.close();
 		System.out.println(solution(s1, s2));
 	}
 

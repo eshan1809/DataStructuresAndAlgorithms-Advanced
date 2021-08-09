@@ -5,7 +5,6 @@
 4. You have to find the minimum cost required to make the given two strings identical.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class minimumCostToMakeTwoStringsIdentical {
@@ -38,6 +37,7 @@ public class minimumCostToMakeTwoStringsIdentical {
         String s2 = scn.next();
         int x = scn.nextInt();
         int y = scn.nextInt();
+        scn.close();
         System.out.println(solution(s1, s2, x, y));
     }
 }

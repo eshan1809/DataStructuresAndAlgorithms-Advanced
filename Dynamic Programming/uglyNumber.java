@@ -7,7 +7,6 @@
 Assumption -> 1 is the first ugly number.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class uglyNumber {

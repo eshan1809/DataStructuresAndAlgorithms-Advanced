@@ -3,7 +3,6 @@
 2. You have to find the maximum length of subarray that appears in both the given arrays.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class maximumLengthOfRepeatedSubarray {

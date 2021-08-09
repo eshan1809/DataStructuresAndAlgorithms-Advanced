@@ -5,7 +5,6 @@
 4. If there are multiple answers, print the lexicographically smallest one.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class maximumSumOfThreeNonOverlappingSubarrays {

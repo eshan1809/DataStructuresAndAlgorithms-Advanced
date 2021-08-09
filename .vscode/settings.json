@@ -1,0 +1,15 @@
+{
+    "java.project.sourcePaths": [
+        "Trees",
+        "Stacks",
+        "Searching and Sorting",
+        "Recursion and Backtracking",
+        "Linked List",
+        "HashMap and Heaps",
+        "Graphs",
+        "Dynamic Programming",
+        "Bit Manipulation",
+        "Arrays and Strings",
+        "Trie"
+    ]
+}

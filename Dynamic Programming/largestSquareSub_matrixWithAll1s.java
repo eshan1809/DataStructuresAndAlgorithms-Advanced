@@ -3,7 +3,6 @@
 2. You have to find the maximum size square sub-matrix with all 1's.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class largestSquareSub_matrixWithAll1s {

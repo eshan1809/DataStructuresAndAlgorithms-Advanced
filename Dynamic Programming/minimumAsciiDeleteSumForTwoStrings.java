@@ -5,7 +5,6 @@
 4. You have to find the minimum ASCII sum of deleted characters.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class minimumAsciiDeleteSumForTwoStrings {
@@ -37,6 +36,7 @@ public class minimumAsciiDeleteSumForTwoStrings {
         Scanner scn = new Scanner(System.in);
         String s1 = scn.next();
         String s2 = scn.next();
+        scn.close();
         System.out.println(solution(s1, s2));
     }
 
