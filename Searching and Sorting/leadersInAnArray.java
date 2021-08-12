@@ -3,7 +3,6 @@ Given an array A of positive integers. Your task is to find the leaders in the a
 */
 
 import java.util.*;
-import java.io.*;
 
 public class leadersInAnArray {
 

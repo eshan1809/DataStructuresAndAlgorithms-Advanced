@@ -6,7 +6,6 @@
 5. You have to find the maximum possible amount of money you can win if you make the first move.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class OptimalStrategyForAGame {
@@ -37,6 +36,7 @@ public class OptimalStrategyForAGame {
         for (int i = 0; i < a.length; i++) {
             a[i] = scn.nextInt();
         }
+        scn.close();
         optimalStrategy(a);
     }
 
