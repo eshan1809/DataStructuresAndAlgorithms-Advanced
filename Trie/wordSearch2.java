@@ -6,7 +6,6 @@ You can return word's in any order.
 */
 
 import java.io.*;
-import java.net.Inet4Address;
 import java.util.*;
 
 public class wordSearch2 {
