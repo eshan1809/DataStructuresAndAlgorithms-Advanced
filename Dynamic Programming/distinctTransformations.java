@@ -4,7 +4,6 @@
 3. Transformation can be achieved by removing 0 or more characters from S1, such that the sequence formed by the remaining characters of S1 is identical to S2.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class distinctTransformations {
@@ -29,6 +28,7 @@ public class distinctTransformations {
         Scanner scn = new Scanner(System.in);
         String s1 = scn.next();
         String s2 = scn.next();
+        scn.close();
         System.out.println(solution(s1, s2));
     }
 }

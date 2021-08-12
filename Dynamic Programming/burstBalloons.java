@@ -6,7 +6,6 @@
 5. If arr[i-1] and arr[i+1] don't exist, then you may assume their value as 1.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class burstBalloons {
@@ -39,6 +38,7 @@ public class burstBalloons {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = scn.nextInt();
         }
+        scn.close();
         System.out.println(solution(arr));
     }
 }

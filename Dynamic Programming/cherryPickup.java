@@ -13,7 +13,6 @@
 Note -> If there is no valid path between the top-left cell and bottom-right cell, then no cherries can be collected.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class cherryPickup {

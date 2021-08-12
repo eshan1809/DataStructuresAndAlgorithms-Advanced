@@ -10,11 +10,10 @@
    e. If the egg breaks at a certain floor, it will break at any floor above.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class eggDrop {
-    public static int eggDrop(int n, int k) {
+    public static int solve(int n, int k) {
         // write your code here
         int[][] dp = new int[n][k + 1];
         for (int i = 1; i < k + 1; i++)
@@ -36,6 +35,6 @@ public class eggDrop {
         int n = scn.nextInt();
         int k = scn.nextInt();
         scn.close();
-        System.out.println(eggDrop(n, k));
+        System.out.println(solve(n, k));
     }
 }

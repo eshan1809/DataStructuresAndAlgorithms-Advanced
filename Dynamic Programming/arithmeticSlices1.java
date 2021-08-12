@@ -4,7 +4,6 @@
 3. Arithmetic slice is defined as the sub-array having all its elements in A.P and the length of sub-array should be greater than or equal to 3.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class arithmeticSlices1 {

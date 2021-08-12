@@ -6,7 +6,6 @@
 5. The frog can only jump k-1, k, or k+1 units in the forward direction, where k is the frog's last jump.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class frogJump {

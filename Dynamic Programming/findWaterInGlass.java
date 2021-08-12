@@ -7,7 +7,6 @@
 Assumption -> There are enough glasses in the triangle till no glass overflows.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class findWaterInGlass {

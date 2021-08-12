@@ -7,7 +7,6 @@
    Replace - You can replace any character in s1 with any other character.
 */
 
-import java.io.*;
 import java.util.*;
 
 public class editDistance {
@@ -35,6 +34,7 @@ public class editDistance {
         Scanner scn = new Scanner(System.in);
         String s1 = scn.next();
         String s2 = scn.next();
+        scn.close();
         System.out.println(solution(s1, s2));
     }
 }
