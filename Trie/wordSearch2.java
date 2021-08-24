@@ -72,7 +72,7 @@ public class wordSearch2 {
 
         int n = Integer.parseInt(read.readLine());
         int m = Integer.parseInt(read.readLine());
-        char[][] board = new char[n][];
+        char[][] board = new char[n][m];
         for (int i = 0; i < n; i++) {
             board[i] = read.readLine().trim().toCharArray();
         }
