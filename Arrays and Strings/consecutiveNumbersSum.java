@@ -25,6 +25,7 @@ public class consecutiveNumbersSum {
         Scanner scn = new Scanner(System.in);
         int num = scn.nextInt();
         int res = solution(num);
+        scn.close();
         System.out.println(res);
     }
 }
